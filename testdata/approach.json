@@ -1,0 +1,13 @@
+{
+  "TC01": {
+    "make": "Audi",
+    "model": "Scooter",
+    "cylindercapacity": "1000"
+  },
+
+  "TC02": {
+    "make": "BMW",
+    "model": "Motorcycle",
+    "cylindercapacity": "1500"
+  }
+}

@@ -1,0 +1,10 @@
+application:
+  url: https://sampleapp.tricentis.com
+
+browser:
+  type: chromium
+  headless: false
+
+timeouts:
+  page: 30
+  element: 10
