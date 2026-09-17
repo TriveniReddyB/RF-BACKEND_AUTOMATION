@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.13.12 on win32)" generated="2026-09-17T18:19:06.698220" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\trbika\OneDrive - Capgemini\2026-tr\TA_SANTORINI\rf-backend-automation\tests">
+<suite id="s1-s1" name="Smoke" source="C:\Users\trbika\OneDrive - Capgemini\2026-tr\TA_SANTORINI\rf-backend-automation\tests\smoke">
+<suite id="s1-s1-s1" name="Rest-Api" source="C:\Users\trbika\OneDrive - Capgemini\2026-tr\TA_SANTORINI\rf-backend-automation\tests\smoke\rest-api.robot">
+<test id="s1-s1-s1-t1" name="GET Resource By Id" line="7">
+<kw name="Create API Session" owner="api_keywords">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-09-17T18:19:06.872586" level="INFO">Creating Session using : alias=jsonapi, url=https://jsonplaceholder.typicode.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>jsonapi</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-09-17T18:19:06.872415" elapsed="0.000357"/>
+</kw>
+<status status="PASS" start="2026-09-17T18:19:06.871878" elapsed="0.000971"/>
+</kw>
+<kw name="Get Resource" owner="api_keywords">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-09-17T18:19:07.127072" level="INFO">GET Request : url=https://jsonplaceholder.typicode.com/posts/1 
+ path_url=/posts/1 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-09-17T18:19:07.127185" level="INFO">GET Response : url=https://jsonplaceholder.typicode.com/posts/1 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 17 Sep 2026 16:19:08 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'access-control-allow-credentials': 'true', 'Cache-Control': 'max-age=43200', 'etag': 'W/"124-yiKdLzqO5gfBrJFrcdJ8Yq0LGnU"', 'expires': '-1', 'nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'pragma': 'no-cache', 'report-to': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=GA38uBDAnnFwGJtIPr3%2FFBY7YjSPFKEgALJQ7bco8Lo%3D\\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\\u0026ts=1764925874"}],"max_age":3600}', 'reporting-endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=GA38uBDAnnFwGJtIPr3%2FFBY7YjSPFKEgALJQ7bco8Lo%3D&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;ts=1764925874"', 'Server': 'cloudflare', 'vary': 'Origin, Accept-Encoding', 'via': '2.0 heroku-router', 'x-content-type-options': 'nosniff', 'x-powered-by': 'Express', 'x-ratelimit-limit': '1000', 'x-ratelimit-remaining': '999', 'x-ratelimit-reset': '1764925919', 'Age': '18530', 'cf-cache-status': 'HIT', 'Content-Encoding': 'gzip', 'CF-RAY': 'a3c96e4b6c3c6986-CDG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={
+  "userId": 1,
+  "id": 1,
+  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+} 
+ </msg>
+<msg time="2026-09-17T18:19:07.127242" level="INFO">C:\Users\trbika\OneDrive - Capgemini\2026-tr\TA_SANTORINI\rf-backend-automation\.venv\Lib\site-packages\urllib3\connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'jsonplaceholder.typicode.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2026-09-17T18:19:07.127649" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>jsonapi</arg>
+<arg>${endpoint}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-17T18:19:06.873634" elapsed="0.254049"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2026-09-17T18:19:07.127745" elapsed="0.000040"/>
+</return>
+<msg time="2026-09-17T18:19:07.127894" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>/posts/1</arg>
+<status status="PASS" start="2026-09-17T18:19:06.873304" elapsed="0.254607"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-17T18:19:07.128073" elapsed="0.000177"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-09-17T18:19:07.128840" level="INFO">{'userId': 1, 'id': 1, 'title': 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'body': 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto'}</msg>
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-09-17T18:19:07.128396" elapsed="0.000476"/>
+</kw>
+<status status="PASS" start="2026-09-17T18:19:06.871074" elapsed="0.257937"/>
+</test>
+<test id="s1-s1-s1-t2" name="POST Create Post" line="13">
+<kw name="Create API Session" owner="api_keywords">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-09-17T18:19:07.129944" level="INFO">Creating Session using : alias=jsonapi, url=https://jsonplaceholder.typicode.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>jsonapi</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-09-17T18:19:07.129833" elapsed="0.000222"/>
+</kw>
+<status status="PASS" start="2026-09-17T18:19:07.129659" elapsed="0.000436"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-09-17T18:19:07.130484" level="FAIL">Expected even number of keys and values, got 1.</msg>
+<var>${payload}</var>
+<arg>**.</arg>
+<arg>title=RF Test</arg>
+<arg>body=Robot Framework</arg>
+<arg>userId=1</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="FAIL" start="2026-09-17T18:19:07.130221" elapsed="0.000294">Expected even number of keys and values, got 1.</status>
+</kw>
+<kw name="Post Resource" owner="api_keywords">
+<var>${response}</var>
+<arg>/posts</arg>
+<arg>${payload}</arg>
+<status status="NOT RUN" start="2026-09-17T18:19:07.130716" elapsed="0.000019"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="NOT RUN" start="2026-09-17T18:19:07.131002" elapsed="0.000022"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-09-17T18:19:07.131230" elapsed="0.000022"/>
+</kw>
+<status status="FAIL" start="2026-09-17T18:19:07.129385" elapsed="0.002102">Expected even number of keys and values, got 1.</status>
+</test>
+<test id="s1-s1-s1-t3" name="PUT Update Post" line="20">
+<kw name="Create API Session" owner="api_keywords">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-09-17T18:19:07.132819" level="INFO">Creating Session using : alias=jsonapi, url=https://jsonplaceholder.typicode.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>jsonapi</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-09-17T18:19:07.132723" elapsed="0.000198"/>
+</kw>
+<status status="PASS" start="2026-09-17T18:19:07.132485" elapsed="0.000478"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-09-17T18:19:07.133485" level="INFO">${payload} = {'id': '1', 'title': 'Updated Title', 'body': 'Updated Body', 'userId': '1'}</msg>
+<var>${payload}</var>
+<arg>id=1</arg>
+<arg>title=Updated Title</arg>
+<arg>body=Updated Body</arg>
+<arg>userId=1</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-09-17T18:19:07.133097" elapsed="0.000706"/>
+</kw>
+<kw name="Put Resource" owner="api_keywords">
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2026-09-17T18:19:07.378384" level="INFO">PUT Request : url=https://jsonplaceholder.typicode.com/posts/1 
+ path_url=/posts/1 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '76', 'Content-Type': 'application/json'} 
+ body=b'{"id": "1", "title": "Updated Title", "body": "Updated Body", "userId": "1"}' 
+ </msg>
+<msg time="2026-09-17T18:19:07.378477" level="INFO">PUT Response : url=https://jsonplaceholder.typicode.com/posts/1 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 17 Sep 2026 16:19:08 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'access-control-allow-credentials': 'true', 'Cache-Control': 'no-cache', 'etag': 'W/"54-/1mx5EXRkZvUTE/ToPO+QQYk1Zc"', 'expires': '-1', 'nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'pragma': 'no-cache', 'report-to': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=6%2BFscsdfoErsB%2Bc5uW5N6yf89GOp87lXNkK8OFnRAio%3D\\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\\u0026ts=1789661948"}],"max_age":3600}', 'reporting-endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=6%2BFscsdfoErsB%2Bc5uW5N6yf89GOp87lXNkK8OFnRAio%3D&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;ts=1789661948"', 'Server': 'cloudflare', 'vary': 'Origin, Accept-Encoding', 'via': '2.0 heroku-router', 'x-content-type-options': 'nosniff', 'x-powered-by': 'Express', 'x-ratelimit-limit': '1000', 'x-ratelimit-remaining': '999', 'x-ratelimit-reset': '1789661986', 'cf-cache-status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'CF-RAY': 'a3c96e4c7f9f6f27-CDG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={
+  "id": 1,
+  "title": "Updated Title",
+  "body": "Updated Body",
+  "userId": "1"
+} 
+ </msg>
+<msg time="2026-09-17T18:19:07.378560" level="INFO">C:\Users\trbika\OneDrive - Capgemini\2026-tr\TA_SANTORINI\rf-backend-automation\.venv\Lib\site-packages\urllib3\connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'jsonplaceholder.typicode.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2026-09-17T18:19:07.379080" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>jsonapi</arg>
+<arg>${endpoint}</arg>
+<arg>json=${payload}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-17T18:19:07.134507" elapsed="0.244642"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2026-09-17T18:19:07.379266" elapsed="0.000086"/>
+</return>
+<msg time="2026-09-17T18:19:07.379588" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>/posts/1</arg>
+<arg>${payload}</arg>
+<status status="PASS" start="2026-09-17T18:19:07.134193" elapsed="0.245427"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-17T18:19:07.379957" elapsed="0.000266"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-09-17T18:19:07.381216" level="INFO">{'id': 1, 'title': 'Updated Title', 'body': 'Updated Body', 'userId': '1'}</msg>
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-09-17T18:19:07.380466" elapsed="0.000829"/>
+</kw>
+<status status="PASS" start="2026-09-17T18:19:07.131949" elapsed="0.249620"/>
+</test>
+<test id="s1-s1-s1-t4" name="DELETE Post" line="27">
+<kw name="Create API Session" owner="api_keywords">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-09-17T18:19:07.382706" level="INFO">Creating Session using : alias=jsonapi, url=https://jsonplaceholder.typicode.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>jsonapi</arg>
+<arg>${BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-09-17T18:19:07.382591" elapsed="0.000245"/>
+</kw>
+<status status="PASS" start="2026-09-17T18:19:07.382374" elapsed="0.000516"/>
+</kw>
+<kw name="Delete Resource" owner="api_keywords">
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2026-09-17T18:19:07.862096" level="INFO">DELETE Request : url=https://jsonplaceholder.typicode.com/posts/1 
+ path_url=/posts/1 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-09-17T18:19:07.862186" level="INFO">DELETE Response : url=https://jsonplaceholder.typicode.com/posts/1 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 17 Sep 2026 16:19:09 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2', 'Connection': 'keep-alive', 'access-control-allow-credentials': 'true', 'Cache-Control': 'no-cache', 'etag': 'W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"', 'expires': '-1', 'nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'pragma': 'no-cache', 'report-to': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=WQSoPwHXHNMoPHOrLpDz7ET%2BFXFtKL%2F6%2FtHgPsXaGLw%3D\\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\\u0026ts=1789661949"}],"max_age":3600}', 'reporting-endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=WQSoPwHXHNMoPHOrLpDz7ET%2BFXFtKL%2F6%2FtHgPsXaGLw%3D&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;ts=1789661949"', 'Server': 'cloudflare', 'vary': 'Origin, Accept-Encoding', 'via': '2.0 heroku-router', 'x-content-type-options': 'nosniff', 'x-powered-by': 'Express', 'x-ratelimit-limit': '1000', 'x-ratelimit-remaining': '998', 'x-ratelimit-reset': '1789661986', 'cf-cache-status': 'DYNAMIC', 'CF-RAY': 'a3c96e4e29fe0eac-AMS', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={} 
+ </msg>
+<msg time="2026-09-17T18:19:07.862243" level="INFO">C:\Users\trbika\OneDrive - Capgemini\2026-tr\TA_SANTORINI\rf-backend-automation\.venv\Lib\site-packages\urllib3\connectionpool.py:1129: InsecureRequestWarning: Unverified HTTPS request is being made to host 'jsonplaceholder.typicode.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2026-09-17T18:19:07.862466" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>jsonapi</arg>
+<arg>${endpoint}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-17T18:19:07.383587" elapsed="0.478902"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" start="2026-09-17T18:19:07.862554" elapsed="0.000040"/>
+</return>
+<msg time="2026-09-17T18:19:07.862705" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>/posts/1</arg>
+<status status="PASS" start="2026-09-17T18:19:07.383243" elapsed="0.479480"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-17T18:19:07.862944" elapsed="0.000171"/>
+</kw>
+<status status="PASS" start="2026-09-17T18:19:07.382014" elapsed="0.481265"/>
+</test>
+<doc>REST CRUD Demo</doc>
+<status status="FAIL" start="2026-09-17T18:19:06.743762" elapsed="1.120182"/>
+</suite>
+<suite id="s1-s1-s2" name="Smoke" source="C:\Users\trbika\OneDrive - Capgemini\2026-tr\TA_SANTORINI\rf-backend-automation\tests\smoke\smoke.robot">
+<test id="s1-s1-s2-t1" name="Check Database Connection" line="6">
+<kw name="Connect Oracle Database" owner="db_keywords">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-09-17T18:19:07.907667" level="INFO">DB lirary detected success!</msg>
+<arg>DB lirary detected success!</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-09-17T18:19:07.907459" elapsed="0.000250"/>
+</kw>
+<status status="PASS" start="2026-09-17T18:19:07.907122" elapsed="0.000634"/>
+</kw>
+<status status="PASS" start="2026-09-17T18:19:07.906420" elapsed="0.001540"/>
+</test>
+<doc>smoke tests</doc>
+<status status="PASS" start="2026-09-17T18:19:07.864418" elapsed="0.043962"/>
+</suite>
+<status status="FAIL" start="2026-09-17T18:19:06.742322" elapsed="1.166722"/>
+</suite>
+<status status="FAIL" start="2026-09-17T18:19:06.700772" elapsed="1.208658"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="4" fail="1" skip="0">Tests</stat>
+<stat name="Smoke" id="s1-s1" pass="4" fail="1" skip="0">Tests.Smoke</stat>
+<stat name="Rest-Api" id="s1-s1-s1" pass="3" fail="1" skip="0">Tests.Smoke.Rest-Api</stat>
+<stat name="Smoke" id="s1-s1-s2" pass="1" fail="0" skip="0">Tests.Smoke.Smoke</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

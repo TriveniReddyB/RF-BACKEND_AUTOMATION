@@ -1,0 +1,402 @@
+SSH + GitHub + Local Machine Setup (Complete Notes)
+======================================================
+Use this as your personal checklist for a new laptop or new user.
+
+1. Install Prerequisites
+
+Verify:
+
+git --version
+
+py --version
+
+
+Expected:
+
+git version x.x.x
+Python 3.13.x
+
+2. Configure Git User
+
+Check:
+
+git config --global user.name
+
+git config --global user.email
+
+
+If not configured:
+
+git config --global user.name "<username>"
+
+git config --global user.email "<username>@gmail.com"
+
+
+Verify:
+
+git config --global --list
+
+3. Create GitHub Repository
+
+GitHub:
+
+Profile
+→ Repositories
+→ New Repository
+
+
+Example:
+
+RF-BACKEND_AUTOMATION
+
+
+Create empty repository.
+
+Do NOT add:
+
+README
+.gitignore
+License
+
+4. Generate SSH Key
+
+Open PowerShell:
+
+ssh-keygen -t ed25519 -C "<username>@gmail.com"
+
+
+When prompted:
+
+Enter file in which to save the key:
+
+
+Press:
+
+Enter
+
+
+Uses default:
+
+C:\Users\<username>\.ssh\id_ed25519
+
+
+When prompted:
+
+Enter passphrase:
+
+
+Option 1 (Recommended)
+
+Enter your own passphrase
+
+
+Option 2
+
+Just press Enter twice
+
+
+(no passphrase)
+
+Files created:
+
+id_ed25519
+id_ed25519.pub
+
+5. Add SSH Key To GitHub
+
+Display public key:
+
+Get-Content $HOME\.ssh\id_ed25519.pub
+
+
+Copy entire output:
+
+ssh-ed25519 AAAA.......
+
+
+GitHub:
+
+Profile
+→ Settings
+→ SSH and GPG Keys
+→ New SSH Key
+
+
+Title:
+
+Capgemini Laptop 2026
+
+
+Key:
+
+Paste entire ssh-ed25519 line
+
+
+Save.
+
+6. Verify SSH Connection
+
+Run:
+
+ssh -T git@github.com
+
+
+If:
+
+The authenticity of host ...
+
+
+type:
+
+yes
+
+
+If passphrase was configured:
+
+Enter passphrase for key:
+
+
+Type passphrase.
+
+Success:
+
+Hi <username>!
+You've successfully authenticated,
+but GitHub does not provide shell access.
+
+
+SSH setup complete ✅
+
+7. Create Local Repository
+
+Create folder:
+
+mkdir rf-backend-automation
+
+cd rf-backend-automation
+
+
+Initialize git:
+
+git init
+
+
+Rename branch:
+
+git branch -M main
+
+8. Connect Local Repo To GitHub
+
+Add SSH remote:
+
+git remote add origin git@github.com:<username>/RF-BACKEND_AUTOMATION.git
+
+
+Verify:
+
+git remote -v
+
+
+Expected:
+
+origin git@github.com:<username>/RF-BACKEND_AUTOMATION.git
+
+9. Create Python Virtual Environment
+
+Inside project:
+
+py -3.13 -m venv .venv
+
+
+Activate:
+
+.\.venv\Scripts\Activate.ps1
+
+
+Verify:
+
+python --version
+
+python -m pip --version
+
+10. Create .gitignore
+
+Create:
+
+.gitignore
+
+
+Content:
+
+.venv/
+
+results/
+
+output.xml
+report.html
+log.html
+
+__pycache__/
+
+.idea/
+.vscode/
+
+
+Important:
+
+❌ Never commit .venv
+
+11. Create requirements.txt
+robotframework==7.4.2
+
+robotframework-requests==0.9.7
+
+robotframework-databaselibrary==2.4.1
+
+robotframework-soaplibrary==1.4
+
+robotframework-datadriver==1.11.2
+
+robotframework-jsonlibrary==0.5
+
+oracledb==3.4.2
+
+pyyaml==6.0.2
+
+numpy
+
+pandas
+
+
+Install:
+
+python -m pip install -r requirements.txt
+
+12. Verify Robot Framework
+robot --version
+
+
+Expected:
+
+Robot Framework 7.x
+
+13. Install VS Code Extensions
+
+Install:
+
+RobotCode - Robot Framework Support
+
+
+Then:
+
+Ctrl+Shift+P
+
+
+Select:
+
+Python: Select Interpreter
+
+
+Choose:
+
+rf-backend-automation\.venv\Scripts\python.exe
+
+14. Commit To GitHub
+
+Add files:
+
+git add .
+
+
+Commit:
+
+git commit -m "Initial RF backend framework setup"
+
+
+Push:
+
+git push -u origin main
+
+
+If asked:
+
+Enter passphrase for key:
+
+
+Enter SSH passphrase.
+
+Refresh GitHub.
+
+Repository now contains your framework.
+
+Final RF Structure
+rf-backend-automation
+│
+├── tests
+│   ├── rest
+│   ├── soap
+│   └── db
+│
+├── resources
+│   ├── common.resource
+│   ├── rest_keywords.resource
+│   ├── soap_keywords.resource
+│   └── db_keywords.resource
+│
+├── config
+│   ├── O2.yaml
+│   ├── T2.yaml
+│   ├── O3.yaml
+│   ├── T3.yaml
+│   ├── O6.yaml
+│   └── T6.yaml
+│
+├── variables
+│
+├── results
+│
+├── requirements.txt
+├── azure-pipelines.yml
+├── README.md
+├── .gitignore
+└── .venv (NOT COMMITTED)
+
+Golden Rules
+
+✅ Commit:
+
+.robot
+.resource
+.yaml
+.py
+requirements.txt
+azure-pipelines.yml
+README.md
+
+
+❌ Never commit:
+
+.venv
+output.xml
+report.html
+log.html
+results
+
+
+✅ Use SSH:
+
+git@github.com:<username>/RF-BACKEND_AUTOMATION.git
+
+
+✅ Other developers only need:
+
+git clone <repo>
+
+py -3.13 -m venv .venv
+
+.\.venv\Scripts\Activate.ps1
+
+pip install -r requirements.txt
+
+
+then now you are ready to code. 🚀
