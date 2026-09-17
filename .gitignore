@@ -2,3 +2,8 @@
 *.exe
 *.dll
 *.com
+
+./results/*
+*.log
+*.html
+*.output
